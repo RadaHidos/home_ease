@@ -18,6 +18,6 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         Service::factory(10)->create();
-        Comment::factory(5)->create();
+        Comment::factory(20)->create();
     }
 }

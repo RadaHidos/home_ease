@@ -45,4 +45,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    //Model relations
+    public function services()
+    {
+        return $this->hasMany(Service::class);
+    }
 }

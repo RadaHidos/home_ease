@@ -20,6 +20,7 @@ class ServiceFactory extends Factory
             'title' => fake()->sentence(5),
             'content' => fake()->paragraph(3),
             'author_id' => fake()->numberBetween(1, 5),
+            'is_published' => fake()->boolean(60),
             //
         ];
     }

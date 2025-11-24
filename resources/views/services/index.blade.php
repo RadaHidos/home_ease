@@ -4,7 +4,8 @@
 
         <!-- cards with title and content  -->
         @foreach ($services as $service)
-        <article class="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 flex flex-col justify-between">
+        <a href="/services/{{$service->id}}" article class="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 flex flex-col justify-between
+    transition-all duration-300 hover:shadow-l hover:scale-[1.01] cursor-pointer">
 
             <div>
                 <h2 class="text-lg font-semibold text-slate-900 leading-snug mb-3">
@@ -18,8 +19,8 @@
 
 
 
-        </article>
-        @endforeach
+            </article>
+            @endforeach
 
     </div>
 

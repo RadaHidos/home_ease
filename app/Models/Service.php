@@ -11,6 +11,11 @@ class Service extends Model
     use HasFactory;
 
     //relationshipsss
+    public function author()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function comments()
     {
         return $this->hasMany(Comment::class);

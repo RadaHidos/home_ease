@@ -11,14 +11,15 @@ class Service extends Model
     use HasFactory;
 
     //relationshipsss
-    public function categories()
-    {
-        return $this->hasMany(Category::class);
-    }
 
     public function author()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function categories()
+    {
+        return $this->hasMany(Category::class);
     }
 
     public function comments()

@@ -15,8 +15,10 @@ class ServiceController extends Controller
         return view('services.index', compact('services'));
     }
 
-    function show($service)
+    function show(int $id)
     {
+        $service = Service::find($id);
+
         return view('services.show', compact('service'));
     }
 }

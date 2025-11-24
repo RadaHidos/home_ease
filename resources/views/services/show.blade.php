@@ -1,4 +1,12 @@
 <x-site-layout title="{{$service->title}}">
+
+    <div class="mt-8 mb-10 border-l-4 border-blue-500 pl-4">
+        <p class="text-sm text-slate-500">Service provided by</p>
+        <p class="text-lg font-semibold text-blue-600">
+            {{ $service->author->name}}
+        </p>
+    </div>
+
     {{$service->content}}
 
     <section class="mt-10">

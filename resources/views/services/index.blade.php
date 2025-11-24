@@ -1,3 +1,3 @@
 <x-site-layout title="Services provided">
-    TESTINNG
+    {{$services}}
 </x-site-layout>

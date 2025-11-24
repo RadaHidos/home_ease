@@ -19,8 +19,8 @@ class ServiceController extends Controller
     function show(int $id)
     {
         $service = Service::find($id);
-        $comments = Comment::where('service_id', $service->id)->get();
+        //$comments = Comment::where('service_id', $service->id)->get();
 
-        return view('services.show', compact('service', 'comments'));
+        return view('services.show', compact('service'));
     }
 }

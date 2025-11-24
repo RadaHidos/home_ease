@@ -9,4 +9,10 @@ class Service extends Model
 {
     /** @use HasFactory<\Database\Factories\ServiceFactory> */
     use HasFactory;
+
+    //relationshipsss
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

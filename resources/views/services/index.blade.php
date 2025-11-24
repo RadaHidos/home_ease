@@ -16,6 +16,19 @@
                     {{ $service->content }}
                 </p>
             </div>
+
+            <div class="mt-5 pt-4 border-t border-slate-100">
+                <!-- Name of the author -->
+                <div class="flex items-center gap-3 mb-4">
+
+                    <p class="text-sm font-medium text-slate-800">
+                        {{$service->author->name}}
+                    </p>
+                </div>
+
+            </div>
+
+
         </a>
         @endforeach
 

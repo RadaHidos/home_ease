@@ -16,11 +16,8 @@
                     {{ $service->content }}
                 </p>
             </div>
-
-
-
-            </article>
-            @endforeach
+        </a>
+        @endforeach
 
     </div>
 

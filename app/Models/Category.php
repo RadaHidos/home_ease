@@ -11,3 +11,8 @@ class Category extends Model
     use HasFactory;
 
     //relations
+    public function service()
+    {
+        return $this->belongsTo(Service::class);
+    }
+}

@@ -19,6 +19,7 @@ class ServiceFactory extends Factory
         return [
             'title' => fake()->sentence(5),
             'content' => fake()->paragraph(3),
+            'author_id' => fake()->numberBetween(1, 5),
             //
         ];
     }

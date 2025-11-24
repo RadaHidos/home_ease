@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
     {
         Service::factory(10)->create();
         Comment::factory(20)->create();
+        User::factory(5)->create();
     }
 }

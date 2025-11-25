@@ -11,6 +11,8 @@ Route::get('services/{id}', [\App\Http\Controllers\ServiceController::class, 'sh
 Route::resource('categories', \App\Http\Controllers\CategoryController::class);
 
 
+Route::resource('admin/categories', \App\Http\Controllers\AdminCategoryController::class);
+
 Route::get('/dashboard', function () {
     return view('userzone.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

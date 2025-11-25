@@ -8,7 +8,7 @@ Route::get('services', [\App\Http\Controllers\ServiceController::class, 'index']
 Route::get('services/{id}', [\App\Http\Controllers\ServiceController::class, 'show'])->name('services.show');
 
 
-Route::resource('categories', \App\Http\Controllers\CategoryController::class);
+Route::resource('categories', \App\Http\Controllers\CategoryController::class)->only(['index', 'show']);
 
 
 Route::resource('admin/categories', \App\Http\Controllers\AdminCategoryController::class);

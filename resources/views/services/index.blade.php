@@ -4,20 +4,25 @@
 
         <!-- cards with title and content  -->
         @foreach ($services as $service)
-        <a href="/services/{{$service->id}}" article class="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 flex flex-col justify-between
-    transition-all duration-300 hover:shadow-l hover:scale-[1.01] cursor-pointer">
+        <div article class="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 flex flex-col justify-between
+    transition-all duration-300 hover:shadow-l hover:scale-[1.01]">
 
             <div>
-                <h2 class="text-lg font-semibold text-slate-900 leading-snug mb-3">
+                <a href="/services/{{ $service->id }}" class="text-lg font-semibold text-slate-900 
+                leading-snug mb-3 inline-block hover:text-blue-600 transition-colors duration-200">
                     {{ $service->title }}
-                </h2>
+                </a>
 
-                @foreach ($service->categories as $category)
-                <span class="px-3 mr-2 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-700 transition
-                     hover:bg-blue-200 hover:-translate-y-[1px]">
-                    {{ $category->name }}
-                </span>
-                @endforeach
+
+                <div class="mb-3 flex flex-wrap gap-2">
+                    @foreach ($service->categories as $category)
+                    <a href="/categories/{{ $category->id }}"
+                        class="px-3 py-1 text-xs font-normal rounded-full bg-blue-100 text-blue-700
+                                  transition hover:bg-blue-200 hover:-translate-y-[1px]">
+                        {{ $category->name }}
+                    </a>
+                    @endforeach
+                </div>
 
                 <p class="mt-4 text-sm text-slate-600 leading-relaxed">
                     {{ $service->content }}
@@ -36,7 +41,7 @@
             </div>
 
 
-        </a>
+        </div>
         @endforeach
 
     </div>

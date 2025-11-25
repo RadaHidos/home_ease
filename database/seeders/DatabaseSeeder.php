@@ -26,7 +26,14 @@ class DatabaseSeeder extends Seeder
 
         //associate services to categories
         $services->each(function ($service) {
-            $service->categories()->attach([1, 2, 3]);
+
+            $nr_categories = random_int(1, 2);
+            $category_list = [];
+            for ($i = 0; $i < $nr_categories; $i++) {
+                $category_list[] = random_int(1, 5);
+            }
+
+            $service->categories()->attach($category_list);
         });
     }
 }

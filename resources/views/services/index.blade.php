@@ -12,6 +12,13 @@
                     {{ $service->title }}
                 </h2>
 
+                @foreach ($service->categories as $category)
+                <span class="px-3 mr-2 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-700 transition
+                     hover:bg-blue-200 hover:-translate-y-[1px]">
+                    {{ $category->name }}
+                </span>
+                @endforeach
+
                 <p class="mt-4 text-sm text-slate-600 leading-relaxed">
                     {{ $service->content }}
                 </p>

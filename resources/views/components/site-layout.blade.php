@@ -23,6 +23,7 @@
             <nav class="space-x-8">
                 <a href="/" class="hover:text-blue-600 transition">Home</a>
                 <a href="/services" class="hover:text-blue-600 transition">Services</a>
+                <a href="/categories" class="hover:text-blue-600 transition">Categories</a>
                 <a href="/contact" class="hover:text-blue-600 transition">Contact</a>
             </nav>
 

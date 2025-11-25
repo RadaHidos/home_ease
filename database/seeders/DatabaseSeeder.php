@@ -18,9 +18,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Service::factory(10)->create();
+        $services = Service::factory(10)->create();
         Comment::factory(20)->create();
         User::factory(5)->create();
         Category::factory(5)->create();
+
+
+        //associate services to categories
+        $services->each(function ($service) {
+            $service->categories()->attach([1, 2, 3]);
+        });
     }
 }

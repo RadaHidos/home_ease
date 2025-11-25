@@ -15,5 +15,15 @@ class CategoryController extends Controller
 
         return view('categories.index', compact('categories'));
     }
-    //
+
+
+    public function show($id)
+    {
+
+        //load data
+        $category = Category::find($id);
+
+        //return view
+        return view('categories.show', compact('category'));
+    }
 }

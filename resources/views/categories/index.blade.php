@@ -29,10 +29,25 @@
                 </div>
 
 
-                <a href="/categories/{{ $category->id }}/edit"
-                    class="text-xs text-slate-400 hover:text-blue-500 transition-colors">
-                    Edit
-                </a>
+                <div class="flex items-center gap-3">
+
+                    <a href="/categories/{{ $category->id }}/edit"
+                        class="text-xs text-slate-400 hover:text-blue-500 transition-colors">
+                        Edit
+                    </a>
+
+
+                    <form action="/categories/{{ $category->id }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+
+                        <button type="submit"
+                            class="text-xs text-red-400 hover:text-red-600 transition-colors cursor-pointer">
+                            Delete
+                        </button>
+                    </form>
+
+                </div>
             </div>
 
         </div>

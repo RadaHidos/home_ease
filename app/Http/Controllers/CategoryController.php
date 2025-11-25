@@ -26,4 +26,18 @@ class CategoryController extends Controller
         //return view
         return view('categories.show', compact('category'));
     }
+
+    public function create()
+    {
+        return view('categories.create');
+    }
+
+    public function store(Request $request)
+    {
+        Category::create([
+            'name' => $request->name,
+        ]);
+
+        return redirect("/categories");
+    }
 }

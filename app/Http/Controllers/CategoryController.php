@@ -40,4 +40,21 @@ class CategoryController extends Controller
 
         return redirect("/categories");
     }
+
+    public function edit($id)
+    {
+        $category = Category::find($id);
+        return view("categories.edit", compact("category"));
+    }
+
+    public function update(Request $request, $id)
+    {
+
+
+        $category = Category::find($id);
+        $category->update([
+            'name' => $request->name,
+        ]);
+        return redirect('/categories');
+    }
 }

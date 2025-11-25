@@ -9,10 +9,10 @@
 
     <div class="flex gap-2 mt-4 mb-4">
         @foreach ($service->categories as $category)
-        <span class="px-3 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-700 transition
+        <a href="/categories/{{ $category->id }}" class="px-3 py-1 text-xs font-medium rounded-full bg-blue-100 text-blue-700 transition
                      hover:bg-blue-200 hover:-translate-y-[1px]">
             {{ $category->name }}
-        </span>
+        </a>
         @endforeach
     </div>
 

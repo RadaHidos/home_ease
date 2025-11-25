@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         $services = Service::factory(10)->create();
         Comment::factory(20)->create();
         User::factory(5)->create();
-        Category::factory(5)->create();
+        Category::factory(6)->create();
 
 
         //associate services to categories

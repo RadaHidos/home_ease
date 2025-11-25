@@ -6,25 +6,40 @@
         </p>
     </div>
 
+    <a href="/categories/create"
+        class="inline-flex items-center mb-4 px-3 py-2 rounded-lg text-xs font-medium
+                      bg-blue-500 text-white hover:bg-blue-600 transition">
+        + New category
+    </a>
+
 
     <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         @foreach ($categories as $category)
 
-        <a href="/categories/{{$category->id}}" class="block bg-white rounded-2xl border border-slate-200 shadow-sm p-5
-                       transition-all duration-200 hover:shadow-md hover:-translate-y-[1px]">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5
+                    transition-all duration-200 hover:shadow-md hover:-translate-y-[1px]">
 
             <div class="flex items-center justify-between mb-2">
-                <h2 class="text-lg font-semibold text-slate-900">
-                    {{ $category->name }}
-                </h2>
 
-                <span class="px-2 py-0.5 text-[11px] font-extralight text-blue-400">
-                    See services
-                </span>
+                <div>
+                    <a href="/categories/{{ $category->id }}"
+                        class="text-lg font-semibold text-slate-900 hover:text-blue-600 transition-colors">
+                        {{ $category->name }}
+                    </a>
+                </div>
+
+
+                <a href="/categories/{{ $category->id }}/edit"
+                    class="text-xs text-slate-400 hover:text-blue-500 transition-colors">
+                    Edit
+                </a>
             </div>
-        </a>
+
+        </div>
+
         @endforeach
     </div>
+
 
 
 

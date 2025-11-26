@@ -1,4 +1,4 @@
-<x-site-layout title='Edit {{$category->name}}'>
+<x-app-layout title='Edit {{$category->name}}'>
 
     <form action="/admin/categories/{{$category->id}}" method="POST">
         @csrf
@@ -6,7 +6,7 @@
 
         <x-form-text name="name" label="Change category name" placeholder="Add a category name" value='{{$category->name}}' />
 
-        
+
 
         <button
             type="submit"
@@ -18,4 +18,4 @@
 
 
 
-</x-site-layout>
+</x-app-layout>

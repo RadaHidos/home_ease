@@ -1,5 +1,11 @@
 <x-app-layout title='Edit {{$service->title}}'>
 
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            You are now editing: {{$service->title}}
+        </h2>
+    </x-slot>
+
     <form action="/admin/services/{{$service->id}}" method="POST">
         @csrf
         @method('PUT')

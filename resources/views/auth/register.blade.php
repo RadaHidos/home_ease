@@ -9,6 +9,13 @@
             <x-breeze.input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
+        <!-- Name -->
+        <div>
+            <x-breeze.input-label for="admin_code" :value="__('Admin Code')" />
+            <x-breeze.text-input id="admin_code" class="block mt-1 w-full" type="text" name="admin_code" :value="old('admin_code')" autofocus autocomplete="admin_code" />
+            <x-breeze.input-error :messages="$errors->get('admin_code')" class="mt-2" />
+        </div>
+
         <!-- Email Address -->
         <div class="mt-4">
             <x-breeze.input-label for="email" :value="__('Email')" />

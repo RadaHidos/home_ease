@@ -8,6 +8,7 @@ use App\Models\Comment;
 use App\Models\Category;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,6 +19,22 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+
+
+        User :: create([
+            'name'=>'Admin',
+            'email'=>'admin@admin.com',
+            'password'=>Hash::make('password'),
+            'is_admin'=>true,
+        ]);
+
+
+        User :: create([
+            'name'=>'User',
+            'email'=>'user@user.com',
+            'password'=>Hash::make('password'),
+            'is_admin'=>false,
+        ]);
         $services = Service::factory(10)->create();
         Comment::factory(20)->create();
         User::factory(5)->create();

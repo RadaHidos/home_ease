@@ -16,6 +16,7 @@
 
 
                 <a href="/admin/services">Go to your services</a>
+                <a href="/admin/categories">Go to categories</a>
             </div>
         </div>
     </div>

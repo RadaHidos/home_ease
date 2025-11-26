@@ -31,11 +31,15 @@
 
             <div class="mt-5 pt-4 border-t border-slate-100">
                 <!-- Name of the author -->
-                <div class="flex items-center gap-3 mb-4">
+                <div class="flex items-center justify-between gap-3 mb-4">
 
                     <p class="text-sm font-medium text-slate-800">
                         {{$service->author->name}}
                     </p>
+
+                    @if($service -> canBeManagedBy(auth()->user()))
+                    <a href="/admin/services/{{$service->id}}/edit" class="text-sm text-blue-600 hover:text-blue-800 font-medium">EDIT</a>
+                    @endif
                 </div>
 
             </div>

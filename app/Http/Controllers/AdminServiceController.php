@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Service;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class AdminServiceController extends Controller
 {
@@ -35,10 +37,11 @@ class AdminServiceController extends Controller
 
         $validated = $request->validate([
             'title' => ['required', 'string', 'max:200'],
-            'content' => ['required', 'string', 'min:40']
+            'content' => ['required', 'string', 'min:40'],
+
         ]);
 
-        Service::create($validated + ['author_id' => 1]);
+        Service::create($validated + ['author_id' => Auth::id()]);
 
         return redirect('/admin/services');
         //

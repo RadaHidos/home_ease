@@ -1,4 +1,4 @@
-<x-site-layout title='{{$service->title}}'>
+<x-app-layout title='{{$service->title}}'>
 
     <div class="text-xs text-slate-400 italic mt-2">
         Only you as an admin can see this.
@@ -24,4 +24,4 @@
     {{$service->content}}
 
 
-</x-site-layout>
+</x-app-layout>

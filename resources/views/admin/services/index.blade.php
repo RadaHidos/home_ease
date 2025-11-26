@@ -1,4 +1,4 @@
-<x-site-layout title="Services">
+<x-app-layout title="Services">
 
     <div class="mb-10">
         <p class="text-sm text-slate-500">
@@ -58,4 +58,4 @@
 
 
 
-</x-site-layout>
+</x-app-layout>

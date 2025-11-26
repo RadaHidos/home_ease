@@ -1,4 +1,4 @@
-<x-site-layout title='Create a new service'>
+<x-app-layout title='Create a new service'>
 
     <form action="/admin/services" method="POST">
         @csrf
@@ -10,6 +10,8 @@
 
             <x-form-textarea name="content" label="Add service description" placeholder="Describe your service and give important details" rows="10" />
 
+
+           
             <button
                 type="submit"
                 class="w-full bg-blue-600 text-white py-2 rounded-lg text-sm font-semibold hover:bg-blue-700 transition">
@@ -23,4 +25,4 @@
 
 
 
-</x-site-layout>
+</x-app-layout>

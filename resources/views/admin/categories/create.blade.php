@@ -1,4 +1,4 @@
-<x-site-layout title='Create a new category'>
+<x-app-layout title='Create a new category'>
 
     <form action="/admin/categories" method="post">
         @csrf
@@ -18,4 +18,4 @@
 
 
 
-</x-site-layout>
+</x-app-layout>

@@ -13,6 +13,9 @@
 
                     {{auth()->user()}}
                 </div>
+
+
+                <a href="/admin/services">Go to your services</a>
             </div>
         </div>
     </div>

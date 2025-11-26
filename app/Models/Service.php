@@ -29,4 +29,21 @@ class Service extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    //Model methods---
+    public function canBeManagedBy(?User $user)
+    {
+        if (!$user) {
+            return false;
+        }
+
+        if ($user->id === $this->author_id) {
+            return true;
+        }
+
+        if ($user->is_admin) {
+            return true;
+        }
+        return false;
+    }
 }

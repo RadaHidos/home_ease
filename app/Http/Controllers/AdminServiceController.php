@@ -14,7 +14,14 @@ class AdminServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::all();
+        $services = Service::where('author_id', Auth::id())->get();
+
+        if (Auth::user()->is_admin) {
+            $services = Service::all();
+        }
+
+
+
         return view('admin.services.index', compact('services'));
     }
 
@@ -66,6 +73,12 @@ class AdminServiceController extends Controller
     {
 
         $service = Service::find($id);
+
+        if (!$service->canBeManagedBy(Auth::user())) {
+            abort(403);
+            // return redirect('/admin/services');
+        }
+
         return view('admin.services.edit', compact('service'));
     }
 
@@ -76,6 +89,11 @@ class AdminServiceController extends Controller
     {
 
         $service = Service::find($id);
+
+        if (!$service->canBeManagedBy(Auth::user())) {
+            abort(403);
+            // return redirect('/admin/services');
+        }
 
         $validated = $request->validate([
             'title' => ['required', 'string', 'max:200'],
@@ -92,6 +110,13 @@ class AdminServiceController extends Controller
     public function destroy(string $id)
     {
         $service = Service::find($id);
-        //
+
+        if (!$service->canBeManagedBy(Auth::user())) {
+            abort(403);
+            // return redirect('/admin/services');
+        }
+        $service->delete();
+
+        return redirect('/admin/services');
     }
 }

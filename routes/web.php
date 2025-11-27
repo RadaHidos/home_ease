@@ -22,6 +22,9 @@ Route::middleware('auth')->group(function () {
     ->middleware('is_admin');
     Route::resource('admin/services', \App\Http\Controllers\AdminServiceController::class);
 
+    Route::get('admin/services/{service}/toggle-is-published',\App\Http\Controllers\AdminServiceToggleIsPublishedController::class) -> name('services.publish');
+    
+
     Route::get('/profile', [App\Http\Controllers\Userzone\ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [App\Http\Controllers\Userzone\ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [App\Http\Controllers\Userzone\ProfileController::class, 'destroy'])->name('profile.destroy');

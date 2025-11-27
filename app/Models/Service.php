@@ -12,6 +12,13 @@ class Service extends Model
 
     protected $guarded = [];
 
+    protected function casts(): array
+    {
+        return [
+            'is_published' => 'bool',
+        ];
+    }
+
 
     //relationshipsss
 

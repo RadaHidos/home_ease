@@ -36,5 +36,19 @@
         @endif
     </section>
 
+    <form action="/services/add-comment" method="post" class="space-y-3">
+
+        @csrf
+        <input type='hidden' name='service_id' value="{{$service->id}}">
+        <x-form-text-area name="content" label="Comment" />
+
+        <button
+            type="submit"
+            class="bg-blue-600 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-blue-700 transition cursor-pointer">
+            Post comment
+        </button>
+    </form>
+
+
 
 </x-site-layout>

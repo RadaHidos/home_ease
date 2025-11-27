@@ -16,6 +16,13 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden sm:flex items-center space-x-4">
+
+                    <x-breeze.nav-link
+                        href="/"
+
+                        class="text-sm font-medium">
+                        Home
+                    </x-breeze.nav-link>
                     <x-breeze.nav-link
                         :href="route('dashboard')"
                         :active="request()->routeIs('dashboard')"
@@ -24,18 +31,13 @@
                     </x-breeze.nav-link>
 
                     <x-breeze.nav-link
-                        href="/admin/services"
-
-                        class="text-sm font-medium">
-                        Services
-                    </x-breeze.nav-link>
-
-                    <x-breeze.nav-link
                         href="/services"
 
                         class="text-sm font-medium">
                         List of services
                     </x-breeze.nav-link>
+
+
 
                 </div>
             </div>

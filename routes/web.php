@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [\App\Http\Controllers\WelcomeController::class, 'index']);
+Route::get('/', \App\Http\Controllers\WelcomeController::class);
 
 Route::get('services', [\App\Http\Controllers\ServiceController::class, 'index'])->name('services.index');
 Route::get('services/{id}', [\App\Http\Controllers\ServiceController::class, 'show'])->name('services.show');

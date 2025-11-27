@@ -45,8 +45,9 @@ class AdminServiceController extends Controller
         $validated = $request->validate([
             'title' => ['required', 'string', 'max:200'],
             'content' => ['required', 'string', 'min:40'],
-
+            'price' => ['required', 'integer', 'min:0'],
         ]);
+
 
         Service::create($validated + ['author_id' => Auth::id()]);
 
@@ -97,8 +98,10 @@ class AdminServiceController extends Controller
 
         $validated = $request->validate([
             'title' => ['required', 'string', 'max:200'],
-            'content' => ['required', 'string', 'min:40']
+            'content' => ['required', 'string', 'min:40'],
+            'price' => ['required', 'integer', 'min:0'],
         ]);
+
 
         $service->update($validated);
         return redirect('/admin/services');

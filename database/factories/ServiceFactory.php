@@ -21,6 +21,7 @@ class ServiceFactory extends Factory
             'content' => fake()->paragraph(3),
             'author_id' => fake()->numberBetween(1, 5),
             'is_published' => fake()->boolean(60),
+            'price' => fake()->numberBetween(50, 500),
             //
         ];
     }

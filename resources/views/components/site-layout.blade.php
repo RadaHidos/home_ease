@@ -25,6 +25,10 @@
                 <a href="/services" class="hover:text-blue-600 transition">Services</a>
                 <a href="/categories" class="hover:text-blue-600 transition">Categories</a>
                 <a href="/contact" class="hover:text-blue-600 transition">Contact</a>
+                <a href="/dashboard"
+                    class="px-4 py-2 rounded-md text-sm font-semibold bg-blue-600 text-white hover:bg-blue-700 transition">
+                    Dashboard
+                </a>
             </nav>
 
         </div>

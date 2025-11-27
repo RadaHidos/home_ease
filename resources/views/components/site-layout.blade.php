@@ -20,15 +20,41 @@
             </a>
 
             <!-- Navigation links .. Home has the welcome page, services is the list of services in show/services and contact will have the contact page-->
-            <nav class="space-x-8">
+            <nav class="space-x-6">
                 <a href="/" class="hover:text-blue-600 transition">Home</a>
                 <a href="/services" class="hover:text-blue-600 transition">Services</a>
                 <a href="/categories" class="hover:text-blue-600 transition">Categories</a>
-                <a href="/contact" class="hover:text-blue-600 transition">Contact</a>
-                <a href="/dashboard"
-                    class="px-4 py-2 rounded-md text-sm font-semibold bg-blue-600 text-white hover:bg-blue-700 transition">
+
+
+                @if (Route::has('login'))
+
+                @auth
+                <a
+                    href="{{ url('/dashboard') }}"
+                    class="inline-block px-7 py-1.5 text-sm font-medium rounded-full
+                   bg-blue-600 text-white hover:bg-blue-700 transition">
                     Dashboard
                 </a>
+                @else
+                <a
+                    href="{{ route('login') }}"
+                    class="inline-block px-7 py-1.5 text-sm font-medium rounded-full
+                   border border-slate-200 text-slate-800 hover:bg-slate-100 transition">
+                    Log in
+                </a>
+
+                @if (Route::has('register'))
+                <a
+                    href="{{ route('register') }}"
+                    class="inline-block px-7 py-1.5 text-sm font-semibold rounded-full
+                       bg-blue-600 text-white hover:bg-blue-700 transition">
+                    Register
+                </a>
+                @endif
+                @endauth
+
+                @endif
+
             </nav>
 
         </div>
@@ -37,12 +63,6 @@
 
     <!-- MAIN CONTENT -->
     <main class="w-4/5 mx-auto px-4 py-10">
-
-        <div class="mb-10">
-            <h1 class="text-3xl font-semibold text-gray-900">
-                {{$title}}
-            </h1>
-        </div>
 
         {{ $slot }}
 

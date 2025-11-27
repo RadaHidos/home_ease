@@ -32,6 +32,12 @@
                         class="text-lg font-semibold text-slate-900 hover:text-blue-600 transition-colors">
                         {{ $service->title }}
                     </a>
+                    @if (!$service ->is_published)
+
+                    <p class="text-xs font-medium text-amber-600 mt-1">
+                        This is a draft
+                    </p>
+                    @endif
                 </div>
 
 
@@ -52,6 +58,23 @@
                             Delete
                         </button>
                     </form>
+
+                    @if (!$service ->is_published)
+
+                    <a href="/admin/services/{{$service->id}}/toggle-is-published"
+                        class="inline-block text-xs font-medium text-blue-600 bg-blue-50 px-3 py-1 rounded-md hover:bg-blue-100 transition">
+                        Publish
+                    </a>
+
+                    @else
+                    <a href="/admin/services/{{ $service->id }}/toggle-is-published"
+                        class="inline-block text-xs font-medium text-amber-700 bg-amber-100 px-3 py-1 rounded-md hover:bg-amber-200 transition">
+                        Unpublish
+                    </a>
+
+                    @endif
+
+
 
                 </div>
             </div>

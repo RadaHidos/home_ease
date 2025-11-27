@@ -16,6 +16,8 @@
 
             <x-form-textarea name="content" label="Change service description" placeholder="Describe your service and give important details" rows="10" value='{{$service->content}}' />
 
+            <x-formtext name="price" label="Price (€)" value="{{ $service->price }}"></x-formtext>
+
             <button
                 type="submit"
                 class="w-full bg-blue-600 text-white py-2 rounded-lg text-sm font-semibold hover:bg-blue-700 transition">

@@ -9,9 +9,11 @@
             <x-form-text name="title" label="Add service name" placeholder="What service do you provide?" />
 
             <x-form-textarea name="content" label="Add service description" placeholder="Describe your service and give important details" rows="10" />
+            
+            <x-formtext name="price" label="Price (€)" placeholder="Enter price"></x-formtext>
 
 
-           
+
             <button
                 type="submit"
                 class="w-full bg-blue-600 text-white py-2 rounded-lg text-sm font-semibold hover:bg-blue-700 transition">

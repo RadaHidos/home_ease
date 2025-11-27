@@ -25,9 +25,16 @@
 
                     <x-breeze.nav-link
                         href="/admin/services"
-                        
+
                         class="text-sm font-medium">
                         Services
+                    </x-breeze.nav-link>
+
+                    <x-breeze.nav-link
+                        href="/services"
+
+                        class="text-sm font-medium">
+                        List of services
                     </x-breeze.nav-link>
 
                 </div>

@@ -7,6 +7,8 @@ Route::get('/', \App\Http\Controllers\WelcomeController::class);
 Route::get('services', [\App\Http\Controllers\ServiceController::class, 'index'])->name('services.index');
 Route::get('services/{id}', [\App\Http\Controllers\ServiceController::class, 'show'])->name('services.show');
 
+Route::post('/services/add-comment', [\App\Http\Controllers\CommentController::class, 'store'])->name('comments.store');
+
 
 Route::resource('categories', \App\Http\Controllers\CategoryController::class)->only(['index', 'show']);
 

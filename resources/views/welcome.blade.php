@@ -59,6 +59,10 @@
                             <p class="text-sm text-[#6b6a68] line-clamp-3 mb-4">
                                 {{ $service->content }}
                             </p>
+                            <p class="text-sm font-semibold text-blue-600 mb-2">
+                                €{{ $service->price }}
+                            </p>
+
 
                             <a href="/services/{{ $service->id }}"
                                 class="inline-block mt-auto px-4 py-2 rounded-full text-xs font-semibold bg-blue-600 text-white hover:bg-blue-700 transition">

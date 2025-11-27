@@ -41,6 +41,9 @@
                     <a href="/admin/services/{{$service->id}}/edit" class="text-sm text-blue-600 hover:text-blue-800 font-medium">EDIT</a>
                     @endif
                 </div>
+                <p class="text-sm font-semibold text-blue-600 mb-2">
+                    €{{ $service->price }}
+                </p>
 
             </div>
 

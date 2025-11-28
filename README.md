@@ -43,12 +43,12 @@ Users can browse published services, assign categories, leave comments, and auth
 
 ##Dev Installation instructions:
 
-Create a directory for the project and cd into it
-Clone the project into this directory ```(git clone https://github.com/radahidos/home_ease.git  .)```
-```run composer install```
-Create a ```.env``` for your dev environment: ```cp .env.example .env``` and adjust the settings (local domain, database, etc) if needed
-Set the encryption key in the .env: ```php artisan key:generate```
-when using sqlite: do execute ```touch database/database.sqlite``` to create the database
-next migrate the tables: ```php artisan migrate```
-and then seed date: ```php artisan db:seed```
-Seeding includes two default users: ```admin@admin.com``` and ```user@user.com```, both with ```password``` as password.
+- Create a directory for the project and cd into it
+- Clone the project into this directory ```(git clone https://github.com/radahidos/home_ease.git  .)```
+- ```run composer install```
+- Create a ```.env``` for your dev environment: ```cp .env.example .env``` and adjust the settings (local domain, database, etc) if needed
+- Set the encryption key in the .env: ```php artisan key:generate```
+- when using sqlite: do execute ```touch database/database.sqlite``` to create the database
+- next migrate the tables: ```php artisan migrate```
+- and then seed date: ```php artisan db:seed```
+- Seeding includes two default users: ```admin@admin.com``` and ```user@user.com```, both with ```password``` as password.

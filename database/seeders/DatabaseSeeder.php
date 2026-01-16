@@ -35,22 +35,25 @@ class DatabaseSeeder extends Seeder
             'password'=>Hash::make('password'),
             'is_admin'=>false,
         ]);
-        $services = Service::factory(10)->create();
-        Comment::factory(20)->create();
-        User::factory(5)->create();
-        Category::factory(6)->create();
+  
+    $users = User::factory(5)->create();
 
+    $categories = Category::factory(6)->create();
 
-        //associate services to categories
-        $services->each(function ($service) {
+    $services = Service::factory(10)->make()->each(function ($service) use ($users) {
+        $service->author_id = $users->random()->id;
+        $service->save();
+    });
 
-            $nr_categories = random_int(1, 2);
-            $category_list = [];
-            for ($i = 0; $i < $nr_categories; $i++) {
-                $category_list[] = random_int(1, 5);
-            }
+    $services->each(function ($service) use ($categories) {
+        $service->categories()->attach(
+            $categories->random(random_int(1, 2))->pluck('id')->toArray()
+        );
+    });
 
-            $service->categories()->attach($category_list);
-        });
+    Comment::factory(20)->make()->each(function ($comment) use ($services) {
+        $comment->service_id = $services->random()->id;
+        $comment->save();
+    });
     }
 }

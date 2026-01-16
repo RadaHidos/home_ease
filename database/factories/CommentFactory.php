@@ -19,8 +19,8 @@ class CommentFactory extends Factory
     {
         return [
             //
-            'content' => fake()->text(),
-            'service_id' => fake()->numberBetween(1, 10),
+            'content' => $this->faker->text(),
+            'service_id' => $this->faker->numberBetween(1, 10),
         ];
     }
 }

@@ -17,11 +17,11 @@ class ServiceFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->sentence(5),
-            'content' => fake()->paragraph(3),
-            'author_id' => fake()->numberBetween(1, 5),
-            'is_published' => fake()->boolean(60),
-            'price' => fake()->numberBetween(50, 500),
+            'title' => $this->faker->sentence(5),
+            'content' => $this->faker->paragraph(3),
+            'author_id' => $this->faker->numberBetween(1, 5),
+            'is_published' => $this->faker->boolean(60),
+            'price' => $this->faker->numberBetween(50, 500),
             //
         ];
     }

@@ -21,20 +21,20 @@ class DatabaseSeeder extends Seeder
     {
 
 
-        User :: create([
-            'name'=>'Admin',
-            'email'=>'admin@admin.com',
-            'password'=>Hash::make('password'),
-            'is_admin'=>true,
-        ]);
+        // User :: create([
+        //     'name'=>'Admin',
+        //     'email'=>'admin@admin.com',
+        //     'password'=>Hash::make('password'),
+        //     'is_admin'=>true,
+        // ]);
 
 
-        User :: create([
-            'name'=>'User',
-            'email'=>'user@user.com',
-            'password'=>Hash::make('password'),
-            'is_admin'=>false,
-        ]);
+        // User :: create([
+        //     'name'=>'User',
+        //     'email'=>'user@user.com',
+        //     'password'=>Hash::make('password'),
+        //     'is_admin'=>false,
+        // ]);
   
     $users = User::factory(5)->create();
 

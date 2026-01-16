@@ -1,35 +1,89 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\AdminServiceController;
+use App\Http\Controllers\AdminServiceToggleIsPublishedController;
+use App\Http\Controllers\Userzone\ProfileController;
 
-Route::get('/', \App\Http\Controllers\WelcomeController::class);
+/*
+|--------------------------------------------------------------------------
+| Public routes
+|--------------------------------------------------------------------------
+*/
 
-Route::get('services', [\App\Http\Controllers\ServiceController::class, 'index'])->name('services.index');
-Route::get('services/{id}', [\App\Http\Controllers\ServiceController::class, 'show'])->name('services.show');
+Route::get('/', WelcomeController::class);
 
-Route::post('/services/add-comment', [\App\Http\Controllers\CommentController::class, 'store'])->name('comments.store');
+Route::get('services', [ServiceController::class, 'index'])
+    ->name('services.index');
 
+Route::get('services/{id}', [ServiceController::class, 'show'])
+    ->name('services.show');
 
-Route::resource('categories', \App\Http\Controllers\CategoryController::class)->only(['index', 'show']);
+Route::post('services/add-comment', [CommentController::class, 'store'])
+    ->name('comments.store');
 
+Route::resource('categories', CategoryController::class)
+    ->only(['index', 'show']);
 
-
+/*
+|--------------------------------------------------------------------------
+| User dashboard
+|--------------------------------------------------------------------------
+*/
 
 Route::get('/dashboard', function () {
     return view('userzone.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified'])
+  ->name('dashboard');
+
+/*
+|--------------------------------------------------------------------------
+| Authenticated user routes
+|--------------------------------------------------------------------------
+*/
 
 Route::middleware('auth')->group(function () {
-    Route::resource('admin/categories', \App\Http\Controllers\AdminCategoryController::class)
-    ->middleware('is_admin');
-    Route::resource('admin/services', \App\Http\Controllers\AdminServiceController::class);
 
-    Route::get('admin/services/{service}/toggle-is-published',\App\Http\Controllers\AdminServiceToggleIsPublishedController::class) -> name('services.publish');
-    
+    Route::get('/profile', [ProfileController::class, 'edit'])
+        ->name('profile.edit');
 
-    Route::get('/profile', [App\Http\Controllers\Userzone\ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [App\Http\Controllers\Userzone\ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [App\Http\Controllers\Userzone\ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::patch('/profile', [ProfileController::class, 'update'])
+        ->name('profile.update');
+
+    Route::delete('/profile', [ProfileController::class, 'destroy'])
+        ->name('profile.destroy');
 });
+
+/*
+|--------------------------------------------------------------------------
+| Admin routes
+|--------------------------------------------------------------------------
+*/
+
+Route::middleware(['auth', 'is_admin'])
+    ->prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+
+        Route::resource('categories', AdminCategoryController::class);
+
+        Route::resource('services', AdminServiceController::class);
+
+        Route::get(
+            'services/{service}/toggle-is-published',
+            AdminServiceToggleIsPublishedController::class
+        )->name('services.publish');
+    });
+
+/*
+|--------------------------------------------------------------------------
+| Auth routes (Breeze / Jetstream / etc.)
+|--------------------------------------------------------------------------
+*/
 
 require __DIR__ . '/auth.php';

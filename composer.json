@@ -7,9 +7,11 @@
     "license": "MIT",
     "require": {
         "php": "^8.3",
+        "geocoder-php/google-maps-provider": "^4.8",
         "laravel/framework": "^12.37",
         "laravel/tinker": "^2.10.1",
         "league/flysystem-aws-s3-v3": "^3.0",
+        "php-http/guzzle7-adapter": "^1.1",
         "spatie/laravel-backup": "*",
         "spatie/laravel-flare": "^2.2"
     },

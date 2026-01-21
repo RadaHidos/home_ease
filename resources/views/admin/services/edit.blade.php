@@ -12,10 +12,26 @@
 
 
         <div class="max-w-xl mx-auto bg-white p-6 rounded-xl shadow-md space-y-4">
-            <x-form-text name="title" label="Change service name" placeholder="What service do you provide?" value='{{$service->title}}' />
+            <x-formtext name="title" label="Change service name" placeholder="What service do you provide?" value='{{$service->title}}' />
 
             <x-form-textarea name="content" label="Change service description" placeholder="Describe your service and give important details" rows="10" value='{{$service->content}}' />
 
+<div class="space-y-1">
+    <label for="address" class="block text-sm font-medium text-slate-700">
+        Service Location
+    </label>
+    <input 
+        type="text" 
+        name="address" 
+        id="address" 
+        value="{{ old('address', $service->address) }}" 
+        class="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm"
+        required
+    >
+    @error('address')
+        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+    @enderror
+</div>
             <x-formtext name="price" label="Price (€)" value="{{ $service->price }}"></x-formtext>
 
             <button

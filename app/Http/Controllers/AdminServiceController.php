@@ -40,20 +40,44 @@ class AdminServiceController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
+{
+    $validated = $request->validate([
+        'title' => ['required', 'string', 'max:200'],
+        'content' => ['required', 'string', 'min:40'],
+        'price' => ['required', 'integer', 'min:0'],
+        'address' => ['required', 'string'], 
+    ]);
 
-        $validated = $request->validate([
-            'title' => ['required', 'string', 'max:200'],
-            'content' => ['required', 'string', 'min:40'],
-            'price' => ['required', 'integer', 'min:0'],
-        ]);
+    
+    $response = \Illuminate\Support\Facades\Http::withHeaders([
+        'User-Agent' => 'HomeEase-App-Registration' 
+    ])->get("https://nominatim.openstreetmap.org/search", [
+        'q' => $request->address,
+        'format' => 'json',
+        'limit' => 1
+    ]);
 
+    $data = $response->json();
 
-        Service::create($validated + ['author_id' => Auth::id()]);
-
-        return redirect('/admin/services');
-        //
+    
+    if (empty($data)) {
+        
+        dd("API found nothing for: " . $request->address); 
     }
+
+    $lat = $data[0]['lat'] ?? null;
+    $lng = $data[0]['lon'] ?? null;
+
+    
+    Service::create($validated + [
+        'author_id' => Auth::id(),
+        'lat' => $lat,
+        'lng' => $lng,
+        'address' => $request->address
+    ]);
+
+    return redirect('/admin/services');
+}
 
     /**
      * Display the specified resource.

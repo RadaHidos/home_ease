@@ -111,25 +111,43 @@ class AdminServiceController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
+{
+    $service = Service::find($id);
 
-        $service = Service::find($id);
-
-        if (!$service->canBeManagedBy(Auth::user())) {
-            abort(403);
-            // return redirect('/admin/services');
-        }
-
-        $validated = $request->validate([
-            'title' => ['required', 'string', 'max:200'],
-            'content' => ['required', 'string', 'min:40'],
-            'price' => ['required', 'integer', 'min:0'],
-        ]);
-
-
-        $service->update($validated);
-        return redirect('/admin/services');
+    // ensure the user has permission to edit this
+    if (!$service->canBeManagedBy(Auth::user())) {
+        abort(403);
     }
+
+    $validated = $request->validate([
+        'title' => ['required', 'string', 'max:200'],
+        'content' => ['required', 'string', 'min:40'],
+        'price' => ['required', 'integer', 'min:0'],
+        'address' => ['required', 'string'], // validation for address
+    ]);
+
+    // Only ask the Map API for new coordinates if the address actually changed
+    if ($request->address !== $service->address) {
+        $response = \Illuminate\Support\Facades\Http::withHeaders([
+            'User-Agent' => 'HomeEase-App-Update' 
+        ])->get("https://nominatim.openstreetmap.org/search", [
+            'q' => $request->address,
+            'format' => 'json',
+            'limit' => 1
+        ])->json();
+
+        if (!empty($response)) {
+            // Update the coordinates in validation array
+            $validated['lat'] = $response[0]['lat'];
+            $validated['lng'] = $response[0]['lon'];
+        }
+    }
+
+    
+    $service->update($validated);
+
+    return redirect('/admin/services');
+}
 
     /**
      * Remove the specified resource from storage.

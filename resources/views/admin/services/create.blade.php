@@ -10,6 +10,8 @@
 
             <x-form-text-area name="content" label="Add service description" placeholder="Describe your service and give important details" rows="10" />
             
+            <x-formtext name="address" label="Service Location" placeholder="e.g. 123 Main St, New York" />
+            
             <x-formtext name="price" label="Price (€)" placeholder="Enter price"></x-formtext>
 
 

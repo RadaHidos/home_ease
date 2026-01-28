@@ -18,6 +18,8 @@ use App\Http\Controllers\Userzone\ProfileController;
 
 Route::get('/', WelcomeController::class);
 
+Route::get('/products-search', \App\Livewire\ProductSearch::class);
+
 Route::get('services', [ServiceController::class, 'index'])
     ->name('services.index');
 
@@ -39,7 +41,7 @@ Route::resource('categories', CategoryController::class)
 Route::get('/dashboard', function () {
     return view('userzone.dashboard');
 })->middleware(['auth', 'verified'])
-  ->name('dashboard');
+    ->name('dashboard');
 
 /*
 |--------------------------------------------------------------------------

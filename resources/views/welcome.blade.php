@@ -39,7 +39,7 @@
 
 
                 <!-- featured services section  -->
-                <section class="mt-50 px-4">
+                <section class="mt-20 px-4">
                     <div class="max-w-6xl mx-auto text-center mb-8">
                         <h2 class="text-2xl md:text-3xl font-semibold text-[#1b1b18]">
                             Featured Services
@@ -49,28 +49,8 @@
                         </p>
                     </div>
 
-                    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-                        @foreach($services as $service)
-                        <div class="border border-slate-200 rounded-xl p-6 shadow-sm hover:shadow-md transition">
-                            <h3 class="text-lg font-semibold line-clamp-1 text-[#1b1b18] mb-2">
-                                {{ $service->title }}
-                            </h3>
-
-                            <p class="text-sm text-[#6b6a68] line-clamp-3 mb-4">
-                                {{ $service->content }}
-                            </p>
-                            <p class="text-sm font-semibold text-blue-600 mb-2">
-                                €{{ $service->price }}
-                            </p>
-
-
-                            <a href="/services/{{ $service->id }}"
-                                class="inline-block mt-auto px-4 py-2 rounded-full text-xs font-semibold bg-blue-600 text-white hover:bg-blue-700 transition">
-                                View Service
-                            </a>
-                        </div>
-
-                        @endforeach
+                    <div class="max-w-6xl mx-auto">
+                        <livewire:service-search />
                     </div>
                 </section>
 

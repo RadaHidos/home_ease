@@ -44,6 +44,7 @@
 
             <!-- Right side: user info + dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
+                @auth
                 <div class="flex items-center gap-4">
                     <div class="text-right">
                         <p class="text-xs font-medium text-slate-100">
@@ -82,6 +83,14 @@
                         </x-slot>
                     </x-breeze.dropdown>
                 </div>
+                @else
+                <div class="flex items-center gap-4">
+                    <a href="{{ route('login') }}" class="text-xs font-medium text-slate-100 hover:text-white transition">Log in</a>
+                    @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="text-xs font-medium text-slate-100 hover:text-white transition">Register</a>
+                    @endif
+                </div>
+                @endauth
             </div>
 
             <!-- Hamburger (mobile) -->
@@ -112,6 +121,7 @@
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-4 border-t border-slate-800">
+            @auth
             <div class="px-4">
                 <div class="font-medium text-sm text-slate-100">{{ Auth::user()->name }}</div>
                 <div class="font-medium text-xs text-slate-400">{{ Auth::user()->email }}</div>
@@ -133,6 +143,18 @@
                     </x-breeze.responsive-nav-link>
                 </form>
             </div>
+            @else
+            <div class="px-4 mt-3 space-y-1">
+                <x-breeze.responsive-nav-link :href="route('login')">
+                    {{ __('Log in') }}
+                </x-breeze.responsive-nav-link>
+                @if (Route::has('register'))
+                <x-breeze.responsive-nav-link :href="route('register')">
+                    {{ __('Register') }}
+                </x-breeze.responsive-nav-link>
+                @endif
+            </div>
+            @endauth
         </div>
     </div>
 </nav>

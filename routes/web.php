@@ -19,8 +19,7 @@ use App\Http\Controllers\Userzone\ProfileController;
 Route::get('/', WelcomeController::class);
 
 Route::get('/products-search', \App\Livewire\ProductSearch::class);
-
-Route::get('services', [ServiceController::class, 'index'])
+Route::get('services', \App\Livewire\LocalServiceBrowser::class)
     ->name('services.index');
 
 Route::get('services/{id}', [ServiceController::class, 'show'])

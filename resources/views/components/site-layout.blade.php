@@ -33,7 +33,7 @@
             <nav class="hidden md:flex items-center space-x-6">
                 <a href="/" class="hover:text-blue-600 transition">Home</a>
                 <a href="/services" class="hover:text-blue-600 transition">Services</a>
-                <a href="/products-search" class="hover:text-blue-600 transition">Product Search (API)</a>
+                <a href="/products-search" class="hover:text-blue-600 transition">Products</a>
                 <a href="/categories" class="hover:text-blue-600 transition">Categories</a>
 
 

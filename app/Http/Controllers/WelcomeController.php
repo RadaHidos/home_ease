@@ -10,11 +10,10 @@ class WelcomeController extends Controller
 {
     public function __invoke()
     {
-        $services   = Service::take(3)->get();
+        $services   = Service::where('is_published', true)->take(3)->get();
         $categories = Category::all();
 
         return view('welcome', compact('services', 'categories'));
-        return view('welcome');
     }
     //
 }

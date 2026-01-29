@@ -17,7 +17,10 @@ class ServiceController extends Controller
     public function index()
     {
         try {
-            $services = Service::with(['categories', 'author'])->latest()->paginate(10);
+            $services = Service::where('is_published', true)
+                ->with(['categories', 'author'])
+                ->latest()
+                ->paginate(10);
 
             return response()->json([
                 'success' => true,
@@ -43,6 +46,15 @@ class ServiceController extends Controller
     {
         try {
             $service = Service::with(['categories', 'author'])->findOrFail($id);
+
+            if (!$service->is_published) {
+                // Return 404 for unpublished services via API to match frontend behavior
+                // Unless we want to support a preview mode, but standard public API should usually hide them
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Service not found or not published',
+                ], 404);
+            }
 
             return response()->json([
                 'success' => true,

@@ -14,8 +14,11 @@ class ServiceSearch extends Component
         // If search is empty, get all services. 
         // If not, search by title or content.
         $services = Service::query()
-            ->where('title', 'like', '%' . $this->search . '%')
-            ->orWhere('content', 'like', '%' . $this->search . '%')
+            ->where('is_published', true)
+            ->where(function ($query) {
+                $query->where('title', 'like', '%' . $this->search . '%')
+                    ->orWhere('content', 'like', '%' . $this->search . '%');
+            })
             ->with(['categories', 'author']) // Eager load for performance
             ->latest()
             ->get();

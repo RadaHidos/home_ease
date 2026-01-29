@@ -19,6 +19,15 @@ class ServiceController extends Controller
     function show(int $id)
     {
         $service = Service::find($id);
+
+        if (!$service) {
+            abort(404);
+        }
+
+        if (!$service->is_published && (!auth()->check() || !$service->canBeManagedBy(auth()->user()))) {
+            abort(404);
+        }
+
         //$comments = Comment::where('service_id', $service->id)->get();
 
         return view('services.show', compact('service'));

@@ -72,6 +72,13 @@ Route::middleware(['auth', 'is_admin'])
     ->group(function () {
 
         Route::resource('categories', AdminCategoryController::class);
+    });
+
+
+Route::middleware(['auth'])
+    ->prefix('admin')
+    ->name('admin.')
+    ->group(function () {
 
         Route::resource('services', AdminServiceController::class);
 
